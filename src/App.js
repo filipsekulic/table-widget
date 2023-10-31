@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Inject, Page } from '@syncfusion/ej2-react-grids';
+import * as React from 'react';
+import data from './dataSource';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    function positionIdTemplate(props) {
+        return (
+            <div className='position-id'>
+                {props.PositionId}
+            </div>
+        )
+    } 
 
+    function positionFilledByTemplate(props) {
+        return(
+            <div className={`status-${props.PositionFilledBy}`}>
+                {props.PositionFilledBy}
+            </div>
+        )
+    }
+
+    return <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageSize: 10 }} allowFiltering={true} filterSettings={{ type: 'Menu'}}>
+        <ColumnsDirective>
+            <ColumnDirective field='PositionId' width='30' textAlign="left" allowFiltering={false} template={positionIdTemplate}/>
+            <ColumnDirective field='Description' width='70'/>
+            <ColumnDirective field='PositionFilledBy' width='50' headerTextAlign="left" textAlign="-webkit-center" template={positionFilledByTemplate}/>
+            <ColumnDirective field='CreatedTimestamp' width='70' format="C2" textAlign="left"/>
+            <ColumnDirective field='Region' width='40' textAlign="left"/>
+            <ColumnDirective field='Operator' width='70'textAlign="left" />
+        </ColumnsDirective>
+        <Inject services={[Page, Filter]}/>
+    </GridComponent>
+};
 export default App;

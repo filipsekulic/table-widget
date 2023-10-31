@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import "../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
+
+.e-grid {
+  margin: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.e-grid td.e-active {
+  background-color: #B3DCD6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.e-pager .e-currentitem, 
+.e-pager .e-currentitem:hover, 
+.e-pager .e-currentitem.e-numericitem.e-focused {
+  background-color: #B3DCD6;
+  box-shadow: none;
+  color: #038672;
+  font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.e-gridpager {
+  padding-bottom: 150px;
+}
+
+.position-id {
+  color: #68a6d3;
+}
+
+.status-Asset, .status-Organization, .status-Component, .status-Unit, .status-System, .status-Facility {
+  width: 70%;
+  height: 30px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #2d3130;
 }
 
-.App-link {
-  color: #61dafb;
+.status-Asset  {
+  background-color: #68a6d3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.status-Organization {
+  background-color: #997fda;
+}
+
+.status-Component {
+  background-color: #efdbb6;
+}
+
+.status-Unit {
+  background-color: #ef7d25;
+}
+
+.status-System {
+  background-color: #748385;
+}
+
+.status-Facility {
+  background-color: #65abaa;
 }
