@@ -1,6 +1,6 @@
 import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Inject, Page } from '@syncfusion/ej2-react-grids';
 import * as React from 'react';
-import data from './dataSource';
+import data from './dataSource.json';
 import './App.css';
 
 function App() {
@@ -34,4 +34,5 @@ function App() {
         <Inject services={[Page, Filter]}/>
     </GridComponent>
 };
+
 export default App;
