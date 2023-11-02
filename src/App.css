@@ -33,6 +33,11 @@
   color: #68a6d3;
 }
 
+.status {
+  display: flex;
+  justify-content: center
+}
+
 .status-Asset, .status-Organization, .status-Component, .status-Unit, .status-System, .status-Facility {
   width: 70%;
   height: 30px;

@@ -14,8 +14,10 @@ function App() {
 
     function positionFilledByTemplate(props) {
         return(
-            <div className={`status-${props.PositionFilledBy}`}>
-                {props.PositionFilledBy}
+            <div className='status'>
+                <div className={`status-${props.PositionFilledBy}`}>
+                    {props.PositionFilledBy}
+                </div>
             </div>
         )
     }
@@ -24,7 +26,7 @@ function App() {
         <ColumnsDirective>
             <ColumnDirective field='PositionId' width='30' textAlign="left" allowFiltering={false} template={positionIdTemplate}/>
             <ColumnDirective field='Description' width='70'/>
-            <ColumnDirective field='PositionFilledBy' width='50' headerTextAlign="left" textAlign="-webkit-center" template={positionFilledByTemplate}/>
+            <ColumnDirective field='PositionFilledBy' width='50' headerTextAlign="left" textAlign="center" template={positionFilledByTemplate}/>
             <ColumnDirective field='CreatedTimestamp' width='70' format="C2" textAlign="left"/>
             <ColumnDirective field='Region' width='40' textAlign="left"/>
             <ColumnDirective field='Operator' width='70'textAlign="left" />
