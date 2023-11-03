@@ -8,7 +8,7 @@ module.exports = {
     entry: "./src/entry.js",
     mode: "development",
     devServer: {
-        port: 3001,  // port 3001 for table-widget
+        port: 3002,  // port 3001 for table-widget
     },
     module: {
         rules: [
