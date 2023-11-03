@@ -1,9 +1,9 @@
 import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Inject, Page } from '@syncfusion/ej2-react-grids';
-import * as React from 'react';
-import data from './dataSource';
+import React, { useEffect, useState } from 'react';
+import data from './dataSource.json';
 import './App.css';
 
-function App() {
+function App(props) {
     function positionIdTemplate(props) {
         return (
             <div className='position-id'>
@@ -22,7 +22,30 @@ function App() {
         )
     }
 
-    return <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageSize: 10 }} allowFiltering={true} filterSettings={{ type: 'Menu'}}>
+    const [filterCriteria, setFilterCriteria] = useState(null);
+
+    useEffect(() => {
+        const handleListen = (message) => {
+            setFilterCriteria(message.selected);
+        };
+    
+        const subscription = props?.config?.communicationService.subscribeTo("bar_chart_selection", handleListen);
+ 
+        return () => {
+            subscription.unsubscribe();
+        }
+      }, []);
+
+      const filterData = (data, filterCriteria) => {
+        if (!filterCriteria) {
+            return data; // Return all data if no filterCriteria is set
+        }
+        return data.filter(item => item.PositionFilledBy === filterCriteria);
+    };
+
+    const filteredData = filterData(data, filterCriteria);
+
+    return <GridComponent dataSource={filteredData} allowPaging={true} pageSettings={{ pageSize: 10 }} allowFiltering={true} filterSettings={{ type: 'Menu'}}>
         <ColumnsDirective>
             <ColumnDirective field='PositionId' width='30' textAlign="left" allowFiltering={false} template={positionIdTemplate}/>
             <ColumnDirective field='Description' width='70'/>
@@ -34,4 +57,5 @@ function App() {
         <Inject services={[Page, Filter]}/>
     </GridComponent>
 };
+
 export default App;
